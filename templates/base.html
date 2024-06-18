@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Blog</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div>
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-light nav justify-content-end"
+        >
+          <a class="navbar-brand" href="{% url "blog:home" %}"
+            ><span class="h4">BloggerZ Blog</span></a
+          >
+          <div class="nav justify-content-end">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <a class="nav-link" href="{% url "blog:home" %}"
+                  >Home <span class="sr-only"></span
+                ></a>
+                <a class="nav-link" href=" {% url "blog:blog_list" %}">Blog </a>
+                <a class="nav-link" href="{% url "author:all_authors" %}">Author</a>
+                <a class="nav-link" href="#">About</a>
+              </ul>
+            </div>
+            <button class="btn btn-outline-success" type="button">
+              SignIn
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" type="button">
+              SignOut
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    
+    <main>
+       {% comment %} <div class="containerBox">
+        <div class="containerMo">
+          <div class="boxMo">
+            <div>
+              {% comment %} <img src="{% static 'myproject/profile_avatars/Amrita_Pritam.jpg' %}" alt="hjkbfksdjb"> {% endcomment %}
+            {% comment %} </div>
+          </div>
+          <div class="boxMo">123</div>
+          <div class="boxMo">123</div>
+          <div class="boxMo">123</div>
+          <div class="boxMo">123</div>
+        </div>
+       </div>  {% endcomment %}
+  
+      {%block content %} 
+      {% comment %} <div class="boxMo">
+        <img src="{%static '/media/profile_avatars/1.png' %}" alt="" class="feature-image">
+      </div> {% endcomment %}
+      {%endblock content%}</main>
+    <footer class="footer">
+      <div class="container">
+        <p>© Copyright {% now "Y" %} by BloggerZ Blog</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <div class="post">
+    <div class="headline">
+      <div class="title">
+        <h1>{{ blog.title }}</h1>
+        <div class="author">
+          <p>Author: {{ blog.author }}</p>
+          <p>{{blog.content}}</p>
+          <p>{{ blog.post_date }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <h1>Comments...</h1>
+
+    {% if not blog.comments.all %} No comments Yet..
+    <a href="{% url 'blog:add_comment' blog.id %}" style='color: blue'>Add One</a>
+    {% comment %} <a href="#" style="color: blue">Add One</a> {% endcomment %}
+    {% else %}
+    <a href="{% url "blog:add_comment" blog.id%}">Add Comment</a><br><br>
+    {% for comment in blog.comments.all %}
+    <strong> {{ comment.name }} - {{ comment.date_added }} </strong><br />
+    {{comment.comment}}
+    <br /><br />
+
+
+    {% endfor %} 
+    <a href="{% url "blog:add_comment" blog.id%}">Add Comment</a>
+    {% endif %}
+    <br>
+  </div>
+  <hr />
+
+  {% endblock content %}
+</div>

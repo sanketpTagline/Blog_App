@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="center">
+  {% if blogs %}
+  <div class="container">
+    <h1>This is Blog Website</h1>
+
+    {% for blog in blogs %}
+
+    <div class="card mb-4">
+      <div class="col-xs-4">
+        <span class="pull-right font-weight-bold" style="margin-top: 10px">
+          <h4>
+            <a href="{% url 'blog:blog_detail' blog.id %}">{{ blog.title }}</a>
+          </h4>
+        
+          <h6 class="row-1 text-truncate">{{blog.content}}</h6>
+        </span>
+      </div>
+      <div class="text-right float-right mt-3">
+        <figure class="text-end">
+          <figcaption class="blockquote-footer">
+            {% comment %} <cite title="Source Title">{{ blog.author }}</cite> {% endcomment %}
+            <cite title="Source Title"><a href=" {% url "author:author_detail" blog.author_id %}">{{ blog.author }}</a></cite>
+          </figcaption>
+        </figure>
+        <div class="icon-holder float-left">
+          <i class="bi bi-chat ml-2"></i>
+          <span>12 </span>
+          <space></space>
+          <i class="bi bi-calendar3 ml-2"></i>
+          <span>{{blog.post_date}}</span>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %} {% endif %}
+  </div>
+
+  <div class="pagination">
+    <span class="step-links">
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; first</a>
+      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">next</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+  {% endblock content %}
+</div>

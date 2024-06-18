@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+
+<p>{{author.author_name}}</p>
+
+<p>{{author.author_email}}</p>
+<hr />
+<hr />
+{% if author_posts %} {% for post in author_posts %}
+<div class="container">
+  <div class="card mb-4">
+    <div class="col-xs-4">
+      <span class="pull-right font-weight-bold" style="margin-top: 10px">
+        <h4>
+          <a href="{% url 'blog:blog_detail' post.id %}">{{ post.title }}</a>
+        </h4>
+      </span>
+    </div>
+    <div class="text-right float-right mt-3">
+      <div class="icon-holder float-right">
+        <i class="bi bi-chat ml-2"></i>
+        <span>12 </span>
+        <space></space>
+        <i class="bi bi-calendar3 ml-2"></i>
+        <span>{{post.post_date}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %} {% endif %} {% endblock content %}
