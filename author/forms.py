@@ -6,7 +6,8 @@ from .models import Author
 class AuthorRegisterForm(UserCreationForm):
     class Meta:
         model = Author
-        fields = ('author_email','author_bio')
+        # fields = ('author_email','author_bio')
+        fields = "__all__"
         
 class AuthorSignupForm(UserCreationForm):
     

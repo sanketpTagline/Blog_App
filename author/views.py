@@ -56,8 +56,6 @@ class AuthorSignupView(FormView):
     redirect_authenticated_user = True
     success_url = reverse_lazy("blog:home")
     
-    print("hello")
-    
     def dispatch(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect("blog:blog_list")
