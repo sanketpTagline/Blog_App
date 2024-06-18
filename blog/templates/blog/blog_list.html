@@ -21,7 +21,7 @@
         <figure class="text-end">
           <figcaption class="blockquote-footer">
             {% comment %} <cite title="Source Title">{{ blog.author }}</cite> {% endcomment %}
-            <cite title="Source Title"><a href=" {% url "author:author_detail" blog.author_id %}">{{ blog.author }}</a></cite>
+            <cite title="Source Title"><a href=" {% url "author:author_detail" blog.author_id %}">{{ blog.author.author_name }}</a></cite>
           </figcaption>
         </figure>
         <div class="icon-holder float-left">

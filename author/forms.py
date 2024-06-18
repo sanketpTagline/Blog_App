@@ -4,4 +4,4 @@ from .models import Author
 class AuthorRegisterForm(UserCreationForm):
     class Meta:
         model = Author
-        fields = ('author_user_name','author_bio')
+        fields = ('author_email','author_bio')
