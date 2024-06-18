@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, FormView, UpdateView
 from .models import Author
 from django.core.paginator import Paginator
-from .forms import AuthorRegisterForm
+from .forms import AuthorRegisterForm,AuthorSignupForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import login, views
 from django.shortcuts import redirect
@@ -49,3 +49,24 @@ class AuthorRegisterView(FormView):
         if self.request.user.is_authenticated:
             return redirect('blog:home')
         return super(AuthorRegisterView, self).get(*args, **kwargs)
+
+class AuthorSignupView(FormView):
+    template_name = 'author/register.html'
+    form_class = AuthorSignupForm
+    redirect_authenticated_user = True
+    success_url = reverse_lazy("blog:home")
+    
+    print("hello")
+    
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect("blog:blog_list")
+        return super().dispatch(request, *args, **kwargs)
+    
+    def form_valid(self, form):
+        user = form.save()
+        if user:
+            login(self.request, user)
+
+        return super(AuthorSignupView, self).form_valid(form)
+    
