@@ -3,7 +3,8 @@
 {% block title %}List of bloggers{% endblock %}
 
 {% block content %}
-<h1>All Bloggers</h1>
+<div class = "container">
+    <h1>All Bloggers</h1>
 <hr>
 <div>
     {% for author in authors %}
@@ -22,6 +23,7 @@
       {% endif %}
   </div>
 </nav>
+</div>
 {% endblock %}
 
 

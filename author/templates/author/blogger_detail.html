@@ -1,49 +1,14 @@
 
-{% extends "base.html" %}
-
-{% block title %}Author{% endblock %}
-
-{% block content %}
-<h1 class="text-success">{{author.author_name}}</h1>
-<hr>
-<div>
-    <p>{{author.author_bio|linebreaksbr}}</p>
-</div>
-<hr>
-<h3 class="text-success">All Blogs</h3>
-{% if author_posts %}
-{% for post in author_posts %}
-<div class="card border-success m-3">
-    <a class="text-decoration-none" href="{% url "blog:blog_detail" post.id %}"><h5 class="card-header bg-success text-white bg-opacity-75">{{ post.title }}</h5></a>
-    {% comment %} <div class="card-body">
-        <p class="card-text">Date posted :{{post.created_at}}</p>
-    </div> {% endcomment %}
-</div>
-{% endfor %}
-{% else %}
-No blogs posted by {{author.author_name}} yet!
-{% endif %}
-
-<nav>
-    <div class="pagination justify-content-center">
-        {% if author_posts.has_previous %}
-            <a class="link-success mx-2" href="?page={{ author_posts.previous_page_number }}">Previous</a>
-        {% endif %}
-            <span>Page {{author_posts.number}} of {{author_posts.paginator.num_pages}}.<span>
-        {% if author_posts.has_next %}
-            <a class="link-success mx-2" href="?page={{ author_posts.next_page_number }}">Next</a>
-        {% endif %}
-    </div>
-  </nav>
-{% endblock %}
 
 
-{% comment %} {% extends "base.html" %} {% block content %}
 
-<p>{{author.author_name}}</p>
+  {% extends "base.html" %} {% block content %}
 
-<p>{{author.author_email}}</p>
-<hr />
+
+<h2><p class ="text-center">{{author.author_name}}</p></h2>
+
+ 
+ 
 <hr />
 {% if author_posts %} {% for post in author_posts %}
 <div class="container">
@@ -67,4 +32,42 @@ No blogs posted by {{author.author_name}} yet!
   </div>
 </div>
 
-{% endfor %} {% endif %} {% endblock content %} {% endcomment %}
+{% endfor %} {% endif %} {% endblock content %}  
+
+
+
+{% comment %} {% extends "base.html" %}
+
+{% block title %}Author{% endblock %}
+
+{% block content %}
+<h1 class="text-success">{{author.author_name}}</h1>
+<hr>
+<div>
+    <p>{{author.author_bio|linebreaksbr}}</p>
+</div>
+<hr>
+<h3 class="text-success">All Blogs</h3>
+{% if author_posts %}
+{% for post in author_posts %}
+<div class="card border-success m-3">
+    <a class="text-decoration-none" href="{% url "blog:blog_detail" post.id %}"><h5 class="card-header bg-success text-white bg-opacity-75">{{ post.title }}</h5></a>
+    { 
+</div>
+{% endfor %}
+{% else %}
+No blogs posted by {{author.author_name}} yet!
+{% endif %}
+
+<nav>
+    <div class="pagination justify-content-center">
+        {% if author_posts.has_previous %}
+            <a class="link-success mx-2" href="?page={{ author_posts.previous_page_number }}">Previous</a>
+        {% endif %}
+            <span>Page {{author_posts.number}} of {{author_posts.paginator.num_pages}}.<span>
+        {% if author_posts.has_next %}
+            <a class="link-success mx-2" href="?page={{ author_posts.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+  </nav>
+{% endblock %} {% endcomment %}
