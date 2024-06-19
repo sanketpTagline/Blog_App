@@ -1,4 +1,31 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% block title %}List of bloggers{% endblock %}
+
+{% block content %}
+<h1>All Bloggers</h1>
+<hr>
+<div>
+    {% for author in authors %}
+    <a href="{% url "author:author_detail" author.id %}" class="list-group-item list-group-item-action">{{ author.author_name }}</a><br>
+    {% endfor %}
+</div>
+
+<nav>
+  <div class="pagination justify-content-center mt-3">
+      {% if page_obj.has_previous %}
+          <a class="link-success mx-2" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+          <span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}.<span>
+      {% if page_obj.has_next %}
+          <a class="link-success mx-2" href="?page={{ page_obj.next_page_number }}">Next</a>
+      {% endif %}
+  </div>
+</nav>
+{% endblock %}
+
+
+{% comment %} {% extends 'base.html' %}
 
 {% block title %}List of bloggers{% endblock %}
 
@@ -16,50 +43,5 @@
     {% endfor %}
 {% endif %}
 
-{% comment %} <div class="containerBox">
-<div class="containerMo">
-    <div class="boxMo">
-        <div>
-            
-        </div>
-    </div>
-    <div class="boxMo">hello 2</div>
-    <div class="boxMo">hello 3</div>
-    <div class="boxMo">hello 4</div>
-    <div class="boxMo">hello 5</div>
-</div>
-</div> {% endcomment %}
-  
-{% comment %} <div class="container"> {% endcomment %}
 
-  
-  
-{% comment %} </div> {% endcomment %}
-
-{% comment %} <div class= "container">
-    <div>
-        
-    </div>
-
-</div> {% endcomment %}
-
-
-{% comment %} <hr>
-<div>
-    {% for author in authors %}
-    <a href="{% url "author:author-detail" author.id %}" class="list-group-item list-group-item-action">{{ author.username }}</a><br>
-    {% endfor %}
-</div>
-
-<nav>
-  <div class="pagination justify-content-center mt-3">
-      {% if page_obj.has_previous %}
-          <a class="link-success mx-2" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-      {% endif %}
-          <span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}.<span>
-      {% if page_obj.has_next %}
-          <a class="link-success mx-2" href="?page={{ page_obj.next_page_number }}">Next</a>
-      {% endif %}
-  </div>
-</nav> {% endcomment %}
-{% endblock %}
+{% endblock %} {% endcomment %}

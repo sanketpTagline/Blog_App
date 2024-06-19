@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}New Blog{% endblock title %}
+{% block content %}
+<div class = "container">
+    <h2>Create a new blog post</h2>
+    <div >
+        <form method="post">
+        {% csrf_token %} 
+        {% for field in form %}
+            <div class="mb-3">
+                <label class="form-label">{{ field.label }} :</label><br />
+                {{ field }}
+            </div>
+        {% endfor %}
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+

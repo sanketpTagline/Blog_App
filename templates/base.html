@@ -40,11 +40,11 @@
                 <a class="nav-link" href="{% url "author:signup" %}">About</a>
               </ul>
             </div>
-            <button class="btn btn-outline-success" type="button"><a href="{% url "author:register" %}">
+            <button class="btn btn-outline-success" type="button"><a href="{% url "author:signup" %}">
               SignIn</a>
             </button>
-            <button class="btn btn-sm btn-outline-secondary" type="button">
-              SignOut
+            <button class="btn btn-sm btn-outline-secondary" type="button"><a href="{% url "author:logout" %}">
+              SignOut</a>
             </button>
           </div>
         </nav>

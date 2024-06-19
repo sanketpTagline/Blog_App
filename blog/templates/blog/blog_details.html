@@ -15,11 +15,11 @@
   <hr />
   <div class="container">
     <h1>Comments...</h1>
-
+     
     {% if not blog.comments.all %} No comments Yet..
     <a href="{% url 'blog:add_comment' blog.id %}" style='color: blue'>Add One</a>
     {% comment %} <a href="#" style="color: blue">Add One</a> {% endcomment %}
-    {% else %}
+     {% else %}
     <a href="{% url "blog:add_comment" blog.id%}">Add Comment</a><br><br>
     {% for comment in blog.comments.all %}
     <strong> {{ comment.name }} - {{ comment.date_added }} </strong><br />
@@ -29,7 +29,7 @@
 
     {% endfor %} 
     <a href="{% url "blog:add_comment" blog.id%}">Add Comment</a>
-    {% endif %}
+    {% endif %} 
     <br>
   </div>
   <hr />
